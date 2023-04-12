@@ -82,6 +82,7 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th>F. creación</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -89,6 +90,7 @@
                                     <tr>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
+                                        <td>{{ $user->created_at }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -145,20 +147,57 @@
                 });
             </script>-->
             <!--https://stackoverflow.com/questions/31227844/typeerror-datatable-is-not-a-function-->
+            <!--https://es.stackoverflow.com/questions/87338/cambiar-idioma-de-datatables-->
+            <!--https://datatables.net/plug-ins/i18n/Spanish-->
             <script>$(document).ready(function () {
                 $.noConflict();
                 var table = $('#example').DataTable({
                     "language":{
                         "search":       "Buscar",
-                        "lengthMenu":   "Mostrar _MENU_ registros por página",
-                        "info":         "Mostrando pág. _PAGE_ de _PAGES_ de un total de _TOTAL_ registros",
+                        //"lengthMenu":   "Mostrar _MENU_ registros por página",
+                        "lengthMenu": "Mostrar _MENU_ Entradas",
+                        //"info":         "Mostrando pág. _PAGE_ de _PAGES_ de un total de _TOTAL_ registros",
+                        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
                         "infoFiltered": "(Filtrado de _MAX_ registros)",
+                        "loadingRecords": "Cargando...",
+                        "processing": "Procesando...",
+                        "infoPostFix": "",
+                        "thousands": ",",
+                        "zeroRecords": "Sin resultados encontrados",
                         "paginate":{
                             "previous": "Anterior",
                             "next":     "Siguiente",
                             "first":    "Primero",
                             "last":     "Último"
-                        }
+                        },
+                        "buttons": {
+                            "copy": "Copiar",
+                            "colvis": "Visibilidad",
+                            "collection": "Colección",
+                            "colvisRestore": "Restaurar visibilidad",
+                            "copyKeys": "Presione ctrl o u2318 + C para copiar los datos de la tabla al portapapeles del sistema. <br \/> <br \/> Para cancelar, haga clic en este mensaje o presione escape.",
+                            "copySuccess": {
+                                "1": "Copiada 1 fila al portapapeles",
+                                "_": "Copiadas %ds fila al portapapeles"
+                            },
+                            "copyTitle": "Copiar al portapapeles",
+                            "csv": "CSV",
+                            "excel": "Excel",
+                            "pageLength": {
+                                "-1": "Mostrar todas las filas",
+                                "_": "Mostrar %d filas"
+                            },
+                            "pdf": "PDF",
+                            "print": "Imprimir",
+                            "renameState": "Cambiar nombre",
+                            "updateState": "Actualizar",
+                            "createState": "Crear Estado",
+                            "removeAllStates": "Remover Estados",
+                            "removeState": "Remover",
+                            "savedStates": "Estados Guardados",
+                            "stateRestore": "Estado %d"
+                        },
                     },
                     lengthChange: false,
                         buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
